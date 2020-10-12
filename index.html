@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/nullstyle.css">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <div id="todo-list" class="container">
+    <form v-on:submit.prevent="addNewTodo">
+      <!-- <label for="new-todo">Добавить задачу</label> -->
+      <input
+        v-model="newTodoText"
+        id="new-todo"
+        placeholder="Например, покормить кота"
+      >
+      <button>Add</button>
+    </form>
+    <ul>
+      <li
+        is="todo-item"
+        v-for="(todo, index) in todos"
+        v-bind:key="todo.id"
+        v-bind:title="todo.title"
+        v-bind:stage="todo.stage"
+        v-on:remove="todos.splice(index, 1)"
+      ></li>
+    </ul>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!-- <script src="vue/componentsStyle.js"></script> -->
+  <script src="vue/components.js"></script>
+  <script src="vue/app.js"></script>
+</body>
+</html>
