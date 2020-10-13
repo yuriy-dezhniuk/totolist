@@ -2,7 +2,7 @@ let vm = new Vue({
   el: '#app',
   data: {
     newTodoText: '',
-    todos: JSON.parse(localStorage.getItem('todos')),
+    todos: JSON.parse(localStorage.getItem('todos')) || [],
     // todos: [
     //   // {
     //   //   id: 1,
