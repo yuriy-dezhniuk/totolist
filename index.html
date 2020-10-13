@@ -9,30 +9,35 @@
 </head>
 <body>
 
-  <div id="todo-list" class="container">
+  <div id="app" class="container">
     <form v-on:submit.prevent="addNewTodo">
-      <!-- <label for="new-todo">Добавить задачу</label> -->
       <input
         v-model="newTodoText"
         id="new-todo"
-        placeholder="Например, покормить кота"
+        class="new-todo"
+        placeholder="What needs to be done?"
       >
-      <button>Add</button>
+      <button class="add-item-btn btn">&#x2b; Add</button>
     </form>
-    <ul>
+    <div>
+
+    </div>
+    <h2 class="title">Todo List</h2>
+    <ul class="todo-list">
       <li
         is="todo-item"
         v-for="(todo, index) in todos"
         v-bind:key="todo.id"
         v-bind:title="todo.title"
         v-bind:stage="todo.stage"
-        v-on:remove="todos.splice(index, 1)"
+        v-on:remove="todos.splice(index, 1); sendDataToLS()"
+        v-on:ubdatestate="updateToDoState($event, index)"
       ></li>
     </ul>
+
   </div>
   
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-  <!-- <script src="vue/componentsStyle.js"></script> -->
   <script src="vue/components.js"></script>
   <script src="vue/app.js"></script>
 </body>
